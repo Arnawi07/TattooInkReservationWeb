@@ -865,6 +865,9 @@ function comprobarhorario(db, diacomprobar, fechafinal, dayselected, date) {
 				fechadehorarioinicio = moment(conjunto).format("YYYY-MM-DDTHH:mm:ss");
 			}
 			controlardia++;
+			if(rest.endDate == "00:00"&&rest.startDate == "00:00"){
+				insertar = false;
+			}
 		});
 		if (moment(fechafinal).isAfter(fechadehorariofinal) || moment(fechafinal).isSameOrBefore(fechadehorarioinicio)) {
 			insertar = false;
