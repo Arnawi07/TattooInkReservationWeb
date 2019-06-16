@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>TattoInkLogin</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- update the version number as needed -->
+		<script defer src="/__/firebase/5.11.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.11.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.11.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.11.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.11.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+		<script defer src="/__/firebase/init.js"></script>
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/img-01.jpg');">
+			<div class="wrap-login100 p-t-190 p-b-30">
+				<form class="login100-form validate-form">
+					<div class="login100-form-avatar">
+						<img src="images/imgPrincipal.jpg" alt="AVATAR">
+					</div>
+
+					<span class="login100-form-title p-t-20 p-b-45">
+						TATTOO INK
+					</span>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Usuario requerido">
+						<input class="input100" type="text" id="usuario" name="username" placeholder="Usuario">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Contraseña requerida">
+						<input class="input100" type="password" id="password" name="pass" placeholder="Contraseña">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn p-t-10">
+						<input type="button" class="login100-form-btn" onclick="logincomp()" value="Login"/>
+					</div>
+
+<!--					<div class="text-center w-full p-t-25 p-b-230">
+						<a href="#" class="txt1">
+							Forgot 2 es la nueva Username / Password?
+						</a>
+					</div>-->
+				</form>
+			</div>
+		</div>
+	</div>
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+ 
+
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#config-web-app -->
+		<!-- Es otra llamada de la app de firebase
+				<script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-app.js"></script>
+		
+		<script>
+
+	// Your web app's Firebase configuration
+		var firebaseConfig = {
+		apiKey: "AIzaSyAp0jwXWLgE1764ixCJSvoUNNmVPMF14os",
+		authDomain: "tattoo-ink-cloud-c8382.firebaseapp.com",
+		databaseURL: "https://tattoo-ink-cloud-c8382.firebaseio.com",
+		projectId: "tattoo-ink-cloud-c8382",
+		storageBucket: "tattoo-ink-cloud-c8382.appspot.com",
+		messagingSenderId: "49844355024",
+		appId: "1:49844355024:web:fb0ed3c038755055"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	</script>
+	-->
+	<script src="js/index15.js"></script>
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+					let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+					console.log(">"+document.getElementById('load'))
+          //document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          //document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+</body>
+</html>
